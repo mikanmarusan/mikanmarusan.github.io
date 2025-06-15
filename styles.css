@@ -498,8 +498,31 @@ section {
 .footer {
     background: var(--text-primary);
     color: var(--bg-primary);
-    text-align: center;
     padding: 2rem 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-link {
+    color: var(--bg-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: var(--primary-color);
 }
 
 /* Responsive Design */
@@ -570,6 +593,15 @@ section {
     .hero-buttons {
         justify-content: center;
     }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-links {
+        gap: 1rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -601,6 +633,84 @@ section {
         padding: 0.75rem 1.5rem;
         font-size: 0.9rem;
     }
+}
+
+/* Terms and Privacy Pages */
+.terms-section,
+.privacy-section {
+    padding: 8rem 2rem 4rem;
+    background: var(--bg-primary);
+}
+
+.terms-content,
+.privacy-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--bg-card);
+    padding: 3rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.updated-date {
+    text-align: right;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.terms-content h2,
+.privacy-content h2 {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.terms-content p,
+.privacy-content p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.terms-content ul,
+.privacy-content ul {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.terms-content li,
+.privacy-content li {
+    margin-bottom: 0.5rem;
+}
+
+.contact-info {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.contact-info h2 {
+    border-bottom: none;
+    margin-top: 0;
+}
+
+.contact-info a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: var(--primary-dark);
 }
 
 /* Animations */
