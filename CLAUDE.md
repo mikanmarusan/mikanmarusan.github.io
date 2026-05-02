@@ -1,26 +1,44 @@
-# CLAUDE.md
+# Project Instructions
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+## WHY — Purpose & Context
 
-## Repository Type
-This is a GitHub Pages repository (mikanmarusan.github.io) for hosting a personal website or portfolio.
+This repository contains the source for my personal portfolio site, published at
+<https://mikanmarusan.net>. It exists to give a single, lightweight landing page
+that introduces me, lists featured open-source projects, and links to my public
+profiles. The site is intentionally hand-rolled — fast to load, simple to
+maintain, no framework lock-in.
 
-## Common Commands
-Since this is a new repository, typical GitHub Pages workflows will include:
+The repository is **public**. Anything committed here is world-readable.
 
-- `git add .` - Stage all changes
-- `git commit -m "message"` - Commit changes
-- `git push origin main` - Deploy changes to GitHub Pages
+## WHAT — Architecture & Key Decisions
 
-## Architecture Notes
-- GitHub Pages serves content from the `main` branch root directory
-- Static files (HTML, CSS, JS) should be placed in the root directory
-- Common structure includes:
-  - `index.html` - Main landing page
-  - `assets/` or `css/`, `js/`, `images/` directories for static resources
-  - `_config.yml` if using Jekyll (GitHub Pages' default static site generator)
+- **Stack:** plain static HTML/CSS/JS. No build step. No package manager. No
+  Jekyll (`_config.yml` is intentionally absent even though GitHub Pages
+  defaults to Jekyll).
+- **Files at repo root:**
+  - `index.html` — single landing page (Home / About / Projects / Contact)
+  - `styles.css` — site styles
+  - `script.js` — small DOM enhancements (mobile nav, smooth scroll, fade-ins)
+  - `terms.html`, `privacypolicy.html` — legal pages
+  - `CNAME` — binds the custom domain `mikanmarusan.net`
+- **Hosting:** GitHub Pages, user site, served from the `main` branch root.
+- **Deployment trigger:** every push to `main` redeploys the live site within
+  ~1 minute. Treat `main` as production.
+- **Dependencies (runtime, loaded by `index.html`):** Google Fonts (Inter),
+  cdnjs Font Awesome. No npm dependencies.
+- The featured-project list lives in `index.html` only. Do not duplicate it in
+  README.md or CLAUDE.md — they will drift.
 
-## Development Considerations
-- GitHub Pages has a build process that may take a few minutes to reflect changes
-- Local testing can be done by opening HTML files directly in a browser or using a local server
-- If using Jekyll, local development requires Ruby and the Jekyll gem
+## HOW — Development Workflow
+
+- **Local preview:** open `index.html` directly in a browser, or run
+  `python3 -m http.server 8000` from the repo root and visit
+  `http://localhost:8000/`.
+- **Branching:** create a feature branch before any change —
+  `<type>/<kebab-case-description>` (Conventional Commits). Never commit
+  directly to `main`.
+- **Commits:** Conventional Commits format (`<type>(<scope>): <summary>`).
+- **Deploy:** merge to `main` via PR; GitHub Pages republishes automatically.
+  No separate build step.
+- **Project-specific guardrails** live under `.claude/rules/`. Read every file
+  in that directory before making changes.
