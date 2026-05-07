@@ -43,3 +43,6 @@ build/
 # Backup files
 *.bak
 *.backup
+
+# Claude Code session artifacts (planning docs, agent reports)
+.plans/
